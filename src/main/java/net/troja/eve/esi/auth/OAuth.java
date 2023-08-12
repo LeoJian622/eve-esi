@@ -31,7 +31,10 @@ import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.Pair;
 
 public class OAuth implements Authentication {
-    private static final String URI_OAUTH = "https://login.eveonline.com/v2/oauth";
+    /**
+     * 
+     */
+    private static final String URI_OAUTH = "https://login.evepc.163.com/v2/oauth";
     private static final String URI_AUTHENTICATION = URI_OAUTH + "/authorize";
     private static final String URI_ACCESS_TOKEN = URI_OAUTH + "/token";
     private static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-._~";
@@ -175,8 +178,10 @@ public class OAuth implements Authentication {
         builder.append("&client_id=");
         builder.append(encode(account.getClientId()));
         builder.append("&scope=");
-        builder.append(encode(getScopesString(scopes)));
+        builder.append(URLEncoder.encode(getScopesString(scopes)));
         builder.append("&state=");
+        builder.append(encode(state));
+        builder.append("&device_id=");
         builder.append(encode(state));
         builder.append("&code_challenge");
         builder.append(getCodeChallenge()); // Already url encoded
