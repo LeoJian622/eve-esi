@@ -58,7 +58,7 @@ import net.troja.eve.esi.auth.OAuthFlow;
 
 public class ApiClient {
 
-    private String basePath = "https://esi.evepc.163.com";
+    private String basePath = "https://ali-esi.evepc.163.com";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
